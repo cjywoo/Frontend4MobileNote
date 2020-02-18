@@ -1,0 +1,3 @@
+# 配置请参考：https://www.yuque.com/waquehq/docs/configuration
+repo: 'alipay2088002853001807/ufpm8z'
+pattern: 'docs/**/*.md'

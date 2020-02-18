@@ -1,0 +1,34 @@
+{
+  "name": "frontend4mobilenote",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "docs/**/*.md": [
+      "waque upload -t eemEYI9BpBh5eD5cqh9usQH6Tx29SUVpkzJJ6BaR"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjywoo/Frontend4MobileNote.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjywoo/Frontend4MobileNote/issues"
+  },
+  "homepage": "https://github.com/cjywoo/Frontend4MobileNote#readme",
+  "devDependencies": {
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.3"
+  }
+}
