@@ -30,3 +30,32 @@ npx jest --coverage
 # 一直检测测试用例，修改后，并重新进行测试
 npx jest --watchAll
 ```
+### 测试用例格式
+必须以.test.js为结尾。
+
+1. 同步函数测试用例
+```
+import { fetchData } from './fetchData';
+
+test('fetchData 返回结果为 {success:true}', () => {
+  fetchData((data) => {
+    expect(data).toEqual({
+      success: true
+    })
+  })
+})
+```
+
+2. 异步函数测试用例，必须包括done函数
+```
+import { fetchData } from './fetchData';
+
+test('fetchData 返回结果为 {success:true}', (done) => {
+  fetchData((data) => {
+    expect(data).toEqual({
+      success: true
+    })
+    done();
+  })
+})
+```
