@@ -46,7 +46,7 @@ test('fetchData 返回结果为 {success:true}', () => {
 })
 ```
 
-2. 异步函数测试用例，必须包括done函数
+2. 异步回调函数函数测试用例，必须包括done函数
 ```
 import { fetchData } from './fetchData';
 
@@ -57,5 +57,71 @@ test('fetchData 返回结果为 {success:true}', (done) => {
     })
     done();
   })
+})czw
+```
+
+3. 异步的promise函数测试用例，需要用return返回
+```
+test('fetchData 返回结果为 {success:true}', () => {
+  return fetchData().then(res => {
+    expect(res.data).toEqual({
+      success: true
+    })
+  })
 })
 ```
+
+4. 异步的promise函数测试用例，需要用return返回2
+```
+test('fetchData 返回结果为 { success: true }', () => {
+  return expect(fetchData()).resolves.toMatchObject({
+    data: {
+      success: true
+    }
+  })
+})
+```
+
+5. 只想测试某一个测试用例时，用test.only
+
+### 钩子函数
+钩子函数主要由于以下几种
+* describe: 分组,并形成自己的作用域
+* beforeAll: 所有测试方法之前调用的方法
+* beforeEach: 每个测试方法之前调用的方法
+* afterAll: 所有测试方法之后调用的方法
+* afterEach: 每个测试方法之后调用的方法
+
+```
+let counter = null
+beforeAll(() => {
+  counter = new Counter()
+})
+
+beforeEach(() => {
+  counter = new Counter()
+})
+
+afterAll(() => {
+  console.log('测试成功')
+})
+
+describe('测试增加相关的代码', () => {
+  test('测试 Counter中的 addOne 方法', () => {
+    counter.addOne()
+    expect(counter.number).toBe(1)
+  })
+})
+
+describe('测试减少相关的代码', () => {
+  test('测试 Counter中的 minusOne 方法', () => {
+    counter.minusOne()
+    expect(counter.number).toBe(-1)
+  })
+})
+```
+
+### mock函数
+1. 捕获函数的调用和返回结果，以及this和调用顺序
+2. 可以让我们自由的设置返回结果
+3. 改变函数的内部实现，比如axios的发返回结果
